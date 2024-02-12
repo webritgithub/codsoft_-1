@@ -2,7 +2,7 @@ codsoft_𝒕𝒂𝒔𝒌𝒏𝒐.1
 
 Flight Booking Landing Page 
 
-This repository contains the source code for a captivating front-end flight booking landing page built with HTML and CSS. The landing page is designed to offer users an intuitive interface to search for flights, explore destinations, sign up for exclusive offers, and access essential company information.
+This repository contains the source code for a captivating front-end flight booking landing page built with HTML and CSS. The landing page is designed to offer users an intuitive interface to search for flights, explore destinations, sign up for exclusive offers,FAQs and access essential company information.
 
 Technologies Used:
 
