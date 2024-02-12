@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Flight Booking</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+ header {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header img {
+            width: 100px;
+            margin-right: 50px; /* Adjust margin */
+        }
+
+        nav ul {
+            list-style: none;
+            margin-right: 75px;
+            padding: 0px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0px 30px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav ul li a:hover {
+            color: blue; /* Change color on hover */
+        }
+.open-btn {
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.open-btn:hover {
+    color: blue;
+}
+
+ .login-btn{
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+             background-image: linear-gradient(160deg, #000 0%, #80D0C7 100%);
+            color: #fff;
+        }
+.hero {
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1535156123341-18b2b37d485a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    color: #000;
+    text-align: center;
+    padding: 180px 0;
+}
+
+.container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cards-container {
+    position: absolute;
+    margin-top:100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure cards are above background */
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(0, 0, 255, 0.8); /* Blue color with transparency */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 0 10px;
+    margin-top:29px;
+    transition: transform 0.3s ease;
+    position: relative; /* Needed for the overlay */
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Transparent white overlay */
+    z-index: 1; /* Ensure overlay is above text */
+    border-radius: 5px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Ensure card is above other elements on hover */
+}
+
+.card h3 {
+    color: #000; /* White text color */
+    font-size: 1.5rem; /* Adjust font size */
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2; /* Ensure text is above overlay */
+}
+
+.card p {
+    color: #000; /* White text color */
+    font-size: 1.1rem; /* Adjust font size */
+    position: relative;
+    z-index: 2; /* Ensure text is above overlay */
+}
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure text is above cards */
+}
+.hero h2 {
+    color: #0E1749; /* White text color */
+    font-size: 3rem; /* Adjust font size */
+    font-weight: bold; /* Make the text bold */
+    margin-right:750px;
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Add letter spacing */
+}
+
+
+.flight-search {
+     background-image: linear-gradient(#15235F, #00c6fb 25%, #005bea 100%);
+    padding: 70px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.flight-search h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color:#000;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 20px;
+    font-size: 1.1rem;
+    color:#000;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    width: 250px;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: background-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.form-group input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.search-btn {
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #412893, #000);
+    border-radius: 15px;
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: transform 0.3s, background 0.3s, color 0.3s; /* Add transition for transform, background, and color */
+}
+
+.search-btn:hover {
+    background: linear-gradient(90deg, #000, #412893); /* Change gradient color on hover */
+    color: #fff;
+    transform: scale(1.05); /* Add scale effect on hover */
+}
+
+.featured-destinations {
+    padding: 40px 0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    border-radius: 50px 50px 0 0;
+    position: relative;
+    z-index: 2; /* Ensure featured destinations is above flight search */
+    margin-top: -50px; /* Adjust margin to overlap flight search */
+}
+/* Add these styles to your existing CSS */
+
+.destination-card {
+    display: flex; /* Use flexbox */
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.destination-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.destination-card img {
+    width: 40%; /* Adjust image width */
+    max-width: 300px;
+    height: auto;
+    margin-right: 20px; /* Add margin to separate image and content */
+    border-radius: 5px;
+}
+
+
+
+.destination-card h3 {
+    color: #000;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.destination-card p {
+    color: #555;
+    font-size: 25px;
+    margin-top: 70px;
+    text-align: center; /* Center align text */
+}
+
+.book-now-btn {
+    padding: 10px 20px;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    align-self: flex-start; /* Align button to the start */
+    margin-top:70px;
+    margin-left:90px;
+}
+
+.book-now-btn:hover {
+    background-image: linear-gradient(160deg, #000 0%, #80D0C7 100%);
+
+}
+
+.signup {
+    background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
+    color: #000;
+    text-align: center;
+    padding: 40px 0;
+    box-shadow: 0px 10px 15px -10px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+}
+
+.signup form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.signup input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius:15px 0;
+    border: 2px solid #007bff;
+}
+.faq {
+    background-image: url('https://asset.gecdesigns.com/img/background-templates/blue-bubble-abstract-gradient-background-template-1638174595132-cover.webp');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-color: #f9f9f9;
+    padding: 40px 0;
+    box-shadow: 0px -10px 15px -10px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+}
+.faq h2 {
+    color:#8730D8;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    color: #D85630;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    color: #000;
+    font-size: 1.1rem;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 25px 0; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo img {
+    margin-left:572px;
+    width: 120px;
+    height:67px;
+}
+
+.footer-menu ul {
+    list-style: none;
+}
+
+.footer-menu ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.footer-menu a,
+.footer-info p {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-menu a:hover,
+.footer-info p:hover {
+    color: #00f; /* Adjust link color on hover */
+}
+
+.footer-social-icons {
+    margin-top: 102px;
+    margin-right: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social-icons {
+    margin-left:4px;
+}
+
+.social-icons a {
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+}
+.sidebar {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0; /* Adjusted to position the sidebar on the left side */
+    background-color: #2c3e50;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-image: linear-gradient(#05B5F3,#1E5789,#061825);
+    z-index: 1000; /* Ensure the sidebar appears above all other content */
+    border-top-right-radius: 26px; /* Adjust the border radius as needed */
+}
+
+        .sidebar a {
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #ecf0f1;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: red;
+        }
+
+        /* Responsive styles for smaller screens */
+        @media screen and (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .open-btn {
+                display: block;
+            }
+        }
+
+</style>
+</head>
+<body>
+
+     <header>
+        <div class="container">
+<div class="open-btn" onclick="openSidebar()">&#9776</div>
+ 
+            <nav>
+               
+                <ul>
+                    <img src="C:\Users\Dayatri\Downloads\landing_page_logo.png">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#flights">Flights</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <a href="#login" class="login-btn">Login/Signup</a>&nbsp;&nbsp;&nbsp;
+                    <a href="" class="login-btn">IN | ENG</a>
+                </ul>
+               
+            </nav>
+           
+        </div>
+
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" onclick="closeSidebar()">&times;</span>
+        <a href="#option1">Flights</a>
+        <a href="#option2">Hotels</a>
+        <a href="#option3">Car Booking</a>
+        <a href="#option4">Help</a>
+        <!-- Add more options as needed -->
+    </div>
+
+   <section class="hero">
+   <div class="hero-content">
+            <h2>Discover Your Next Adventure</h2>
+        </div>
+    <div class="container">
+        <!-- Cards Section -->
+        <div class="cards-container">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=207&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <h3>Delhi</h3>
+                <p>History, Monuments, Diversity</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=207&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29hfGVufDB8fDB8fHww">
+                <h3>Goa</h3>
+                <p>Beaches, Nightlife, Architecture</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=207&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8a2VyYWxhfGVufDB8fDB8fHww">
+                <h3>Kerala</h3>
+                <p>Backwaters, Greenery, Culture</p>
+            </div>
+        </div>
+   
+    </div>
+</section>
+
+
+    <section id="flights" class="flight-search">
+        <div class="container">
+            <h2>Search for Flights</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="origin">Origin:</label>
+                    <input type="text" id="origin" name="origin" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">Destination:</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="departure-date">Departure Date:</label>
+                    <input type="date" id="departure-date" name="departure-date" required>
+                </div>
+
+                 <div class="form-group">
+                    <label for="departure-date">Return Date:</label>
+                    <input type="date" id="return-date" name="return-date" required>
+                </div>
+                <button type="submit" class="search-btn">Search Flights</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="destinations" class="featured-destinations">
+        <div class="container">
+            <h2>Featured Destinations</h2>
+            <div class="destination-card">
+                <img src="https://media.istockphoto.com/id/1463219631/photo/eiffel-tower-skyline.webp?b=1&s=170667a&w=0&k=20&c=4ZlZ-Tliycy9WAVuMb1EbV1Mg_Bz2mf02tOr0KQ_EqE=">
+                <h3>Paris</h3>
+                <p>Explore the romantic city of Paris.</p>
+                <a href="#" class="book-now-btn">Book Now</a>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://media.istockphoto.com/id/1454217037/photo/statue-of-liberty-and-new-york-city-skyline-with-manhattan-financial-district-world-trade.webp?b=1&s=170667a&w=0&k=20&c=ILAXN43qdlPTT8ljbbT7Hwp95AQJxKTNygWhsQ3qzO4=">
+                <h3>New York City</h3>
+                <p>Experience the vibrant energy of NYC.</p>
+                <a href="#" class="book-now-btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="signup">
+        <div class="container">
+            <h2>Sign Up for Exclusive Offers</h2>
+            <form action="#" method="post">
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <a href="" class="login-btn">Sign-Up</a>
+            </form>
+        </div>
+    </section>
+<section class="faq">
+    <div class="container">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+            <h3>Q: How do I book a flight?</h3>
+            <p>A: Booking a flight is easy! Simply visit our website, enter your departure and destination details along with your travel dates, and click on the 'Search Flights' button. You'll then be presented with a list of available flights for your chosen route.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q: Can I make changes to my booking?</h3>
+            <p>A: Yes, you can make changes to your booking depending on the fare rules and airline policies. Please log in to your account to manage your booking or contact our customer support team for assistance.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q: What payment methods do you accept?</h3>
+            <p>A: We accept various payment methods including credit/debit cards, online bank transfers, and digital wallets. Rest assured, our payment gateway is secure and your personal information is protected.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q: How can I get a refund for my ticket?</h3>
+            <p>A: Refund eligibility and processes vary depending on the fare type and airline policies. Please refer to the terms and conditions of your ticket or contact our customer support team for assistance with refunds.</p>
+        </div>
+        <!-- Add more FAQ items as needed -->
+    </div>
+</section>
+
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="C:\Users\Dayatri\Downloads\landing_page_logo.png" alt="company logo">
+        </div>
+        <div class="footer-menu">
+            <ul>
+                <li><a href="#">Home |</a></li>
+                <li><a href="#">Contact |</a></li>
+                <li><a href="#">Privacy Policy</a></li><br><br>
+                <li><a href="#"><u>Terms of Service</u></a></li><br>
+                <li><a href="#"><u>Cookie Policy</u></a></li><br>
+                <li><a href="#"><u>Company Details</u></a></li><br>
+                <li><a href="#"><u>Log In</u></a></li><br>
+                <li><a href="#"><u>Privacy Settings</u></a></li><br>
+               <li><a href="#"><u>Help</u></a></li>
+            </ul>
+        </div>
+     </div>
+     <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-info">
+        <p>&copy; 2024 Fly High</p>
+        <p>Email: contact@flyhigh.com</p>
+    </div>
+</footer>
+
+
+
+<script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
+
+</body>
+</html>
+
